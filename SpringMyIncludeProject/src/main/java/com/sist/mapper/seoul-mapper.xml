@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.SeoulMapper">
+<select id="seoulFindListData" resultType="com.sist.vo.SeoulVO" parameterType="map" >
+	SELECT no,title,poster,num
+	FROM (SELECT no,title,poster,rownum as num
+	FROM (SELECT no,title,poster
+	FROM seoul_food 
+	WHERE REGEXP_LIKE(title,#{fd})))
+	WHERE num BETWEEN #{start} AND #{end}
+</select>
+<select id="seoulFindTotalPage" resultType="int" parameterType="map">
+	SELECT CEIL(COUNT(*)/12) FROM seoul_food
+	WHERE REGEXP_LIKE(title,#{fd})
+</select>
+</mapper>
