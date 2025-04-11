@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class DataBoardVO {
-	private int no,hit,filecount;
+	private int no,hit,filecount,replycount;
 	private String name,subject,content,pwd,filename,filesize,dbday;
 	private Date regdate;
 	//upload
