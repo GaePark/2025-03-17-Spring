@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-   <!-- ****** Top Header Area Start ****** -->
+    
+    <!-- ****** Top Header Area Start ****** -->
     <div class="top_header_area">
         <div class="container">
             <div class="row">
@@ -27,25 +28,37 @@
                 <div class="col-7 col-sm-6">
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
                         <div class="login_register_area d-flex">
-                        <c:if test="${sessionScope.userid==null }">
+                          <c:if test="${sessionScope.userid==null }">
                             <div class="login">
                                 <a href="../member/login.do">로그인</a>
                             </div>
                             <div class="register">
                                 <a href="../member/join.do">회원가입</a>
                             </div>
-                        </c:if>
-                         <c:if test="${sessionScope.userid!=null }">
+                          </c:if>
+                          <c:if test="${sessionScope.userid!=null }">
                             <div class="login">
-                            ${sessionScope.username }(
-                            	<sec:authorize access="hasRole('ROLE_ADMIN')">관리자</sec:authorize>
-                            	<sec:authorize access="hasRole('ROLE_USER')">일반사용자</sec:authorize>
-                            )님 로그인 되었습니다. &nbsp;&nbsp;
+                                ${sessionScope.username }(
+                                 <sec:authorize access="hasRole('ROLE_ADMIN')">관리자</sec:authorize>
+                                 <sec:authorize access="hasRole('ROLE_USER')">일반사용자</sec:authorize>
+                                )님 로그인되었습니다 &nbsp;&nbsp;
                                 <a href="../member/logout.do">로그아웃</a>
                             </div>
-                            
-                        </c:if>
+                   
+                          </c:if>
                         </div>
+                        <!-- Search Button Area -->
+                        <!-- <div class="search_button">
+                            <a class="searchBtn" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                        </div>
+                        
+                        <div class="search-hidden-form">
+                            <form action="#" method="get">
+                                <input type="search" name="search" id="search-anything" placeholder="Search Anything...">
+                                <input type="submit" value="" class="d-none">
+                                <span class="searchBtn"><i class="fa fa-times" aria-hidden="true"></i></span>
+                            </form>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -60,7 +73,7 @@
                 <!-- Logo Area Start -->
                 <div class="col-12">
                     <div class="logo_area text-center">
-                        <a href="index.html" class="yummy-logo">Yummy Blog</a>
+                        <a href="index.html" class="yummy-logo">부산 여행</a>
                     </div>
                 </div>
             </div>
@@ -73,33 +86,64 @@
                         <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
                             <ul class="navbar-nav" id="yummy-nav">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="index.html">홈<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                    <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">부산에 가면</a>
                                     <div class="dropdown-menu" aria-labelledby="yummyDropdown">
-                                        <a class="dropdown-item" href="index.html">Home</a>
-                                        <a class="dropdown-item" href="archive.html">Archive</a>
-                                        <a class="dropdown-item" href="single.html">Single Blog</a>
-                                        <a class="dropdown-item" href="static.html">Static Page</a>
-                                        <a class="dropdown-item" href="contact.html">Contact</a>
+                                        <a class="dropdown-item" href="../busan/info.do?cno=1">명소</a>
+                                        <a class="dropdown-item" href="../busan/info.do?cno=2">음식</a>
+                                        <a class="dropdown-item" href="single.html">숙박</a>
+                                        <a class="dropdown-item" href="../busan/info.do?cno=3">쇼핑</a>
+                                        <a class="dropdown-item" href="contact.html">축제</a>
+                                    </div>
+                                </li>
+                                <%--
+                                추천여행
+
+일정여행 테마여행 미식투어 체험·해양
+                                --%>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">추천 여행</a>
+                                    <div class="dropdown-menu" aria-labelledby="yummyDropdown">
+                                        <a class="dropdown-item" href="index.html">일정 여행</a>
+                                        <a class="dropdown-item" href="archive.html">테마 여행</a>
+                                        <a class="dropdown-item" href="single.html">미식 투어</a>
+                                        <a class="dropdown-item" href="static.html">체험 해양</a>
+                                        
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">부산 맛집</a>
+                                    <div class="dropdown-menu" aria-labelledby="yummyDropdown">
+                                        <a class="dropdown-item" href="index.html">맛집 목록</a>
+                                        <a class="dropdown-item" href="archive.html">맛집 검색</a>
+                                        <a class="dropdown-item" href="single.html">맛집 추천</a>
+                                        <a class="dropdown-item" href="static.html">맛집 예약</a>
+                                        
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">레시피</a>
+                                    <div class="dropdown-menu" aria-labelledby="yummyDropdown">
+                                        <a class="dropdown-item" href="index.html">레시피 목록</a>
+                                        <a class="dropdown-item" href="archive.html">쉐프</a>
+                                      
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Features</a>
+                                    <a class="nav-link" href="#">부산 특산물</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Categories</a>
+                                    <a class="nav-link" href="#">커뮤니티</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="archive.html">Archive</a>
+                                    <a class="nav-link" href="archive.html">마이페이지</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../main/delete.do">About</a>
+                                    <a class="nav-link" href="../main/delete.do">관리자페이지</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Contact</a>
-                                </li>
+                               
                             </ul>
                         </div>
                     </nav>
